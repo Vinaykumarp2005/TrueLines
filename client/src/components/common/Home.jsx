@@ -80,8 +80,8 @@ try{
     <div className='container p-5 '>
       {
         isSignedIn === false && <div>
-          <p>Lorem ipsum dolor sit amet Lorem, ipsum dolor sit amet consectetur adipisicing elit. Unde laudantium doloribus quasi? Pariatur quas amet quibusdam recusandae exercitationem, ratione animi cum assumenda labore velit nulla vel veniam, minima minus odit ipsam perferendis, consectetur blanditiis mollitia? Quis laboriosam, quasi doloribus nobis totam ea sint consequatur saepe, temporibus, adipisci dicta facere cum. consectetur adipisicing elit. Esse est necessitatibus deleniti provident nulla! Esse aspernatur quasi ducimus aperiam consectetur.</p>
-          <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Esse est necessitatibus deleniti provident nulla! Esse aspernatur quasi ducimus aperiam consectetur.</p>
+          <h1>Welcome</h1>
+          
           <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Esse est necessitatibus deleniti provident nulla! Esse aspernatur quasi ducimus aperiam consectetur.</p>
           
           </div>
