@@ -7,7 +7,7 @@ import {useForm} from 'react-hook-form'
 import axios from 'axios'
 import { useAuth } from '@clerk/clerk-react'
 import { useNavigate } from 'react-router-dom'
-import {MdDelete,MdRestore} from 'react-icons/md'
+import {MdDelete,MdRestore,MdBlock} from 'react-icons/md'
 // import
 
 function ArticleByID() {
@@ -112,20 +112,44 @@ function ArticleByID() {
           </div>
         </div>
         {
-          currentUser.role==='author' &&(
-            <div className="d-flex me-3">
+         ( currentUser.role==='author')  &&(
+            <div className="d-flex me-3 ">
               {/* Edit button */}
-              <button className="me-2 btn btn-light" onClick={enableEdit}>
+              <button className="me-2 btn btn-light m-4 d-flex align-items-center" style={{ height: "80px", width: "50px", display: "flex", alignItems: "center", justifyContent: "center" }} onClick={enableEdit}>
                   <FaEdit className='text-warning'/>
               </button>
               {/* If article is active,diaplay delete icon els display restore */}
               {
                 state.isArticleActive===true?(
-                  <button className="me-2 btn btn-light" onClick={deleteArticle}>
+                  <button className="me-2 btn btn-light m-4 "  style={{ height: "80px", width: "50px", display: "flex", alignItems: "center", justifyContent: "center" }}
+                  onClick={deleteArticle}>
                     <MdDelete className='text-danger fs-4'/>
                   </button>
                 ):(
-                  <button className="me-2 btn btn-light" onClick={restoreArticle} >
+                  <button className="me-2 btn btn-light" style={{ height: "80px", width: "50px", display: "flex", alignItems: "center", justifyContent: "center" }} onClick={restoreArticle} >
+                  <MdRestore className='text-info fs-4'/>
+                </button>
+                )
+              }
+            </div>
+          )
+        }
+        {
+          ( currentUser.role==='admin')  &&(
+            <div className="d-flex me-3 ">
+              {/* Edit button */}
+              <button className="me-2 btn btn-light m-4 d-flex align-items-center" style={{ height: "80px", width: "50px", display: "flex", alignItems: "center", justifyContent: "center" }} onClick={enableEdit}>
+                  <FaEdit className='text-warning'/>
+              </button>
+              {/* If article is active,diaplay delete icon els display restore */}
+              {
+                state.isArticleActive===true?(
+                  <button className="me-2 btn btn-light m-4 "  style={{ height: "80px", width: "50px", display: "flex", alignItems: "center", justifyContent: "center" }}
+                  onClick={deleteArticle}>
+                    <MdBlock className='text-danger fs-4'/>
+                  </button>
+                ):(
+                  <button className="me-2 btn btn-light m-4" style={{ height: "80px", width: "50px", display: "flex", alignItems: "center", justifyContent: "center" }} onClick={restoreArticle} >
                   <MdRestore className='text-info fs-4'/>
                 </button>
                 )
@@ -135,20 +159,24 @@ function ArticleByID() {
         }
 
 
-      </div>
+      </div >
         {/* content */}
-        <p className="lead mt-3 artcle-content" style={{whiteSpace:"pre-line"}}>
+        <p className="lead mt-3 artcle-content bg-light p-3" style={{whiteSpace:"pre-line"}}>
           {state.content}
         </p>
+        
         {/* comments */}
-        <div>
+        <div  className="bg-light p-3">
+          
+        <h4>Comments</h4>
           <div className="comments my-4">
             {
-              state.comments.length===0?<p className='display-3'>No Comments yet</p>:
+              state.comments.length===0?<p className='display-3 '>No Comments yet</p>:
               state.comments.map(commentObj => {
                 return <div key={commentObj._id}>
                   <p className='user-name'>
                     {commentObj?.nameOfUser}
+                    
                   </p>
                   <p className='comment'>
                     {commentObj?.comment}

@@ -1,6 +1,8 @@
 import { useEffect, useState } from "react";
 import axios from "axios";
 
+import {NavLink,Outlet} from 'react-router-dom'
+
 function AdminDashboard() {
     const [users, setUsers] = useState([]);
     const [articles, setArticles] = useState([]);
@@ -40,11 +42,23 @@ function AdminDashboard() {
     }
 
     return (
-        <div className="container mt-5">
-            <h2 className="text-center mb-4">Admin Dashboard</h2>
+        <div className="container p-5">
+            <h2 className="text-center  p-5">Admin Dashboard</h2>
 
             {error && <p className="text-danger">{error}</p>}
 
+
+            <ul className='d-flex justify-content-around list-unstyled fs-3'>
+            <li className='nav-item'>
+                      <NavLink to='users-authors' className="nav-link">Users Authors</NavLink>
+                    </li>
+                    
+                    <li className='nav-item'>
+                      <NavLink to='articles' className="nav-link">Articles</NavLink>
+                    </li>
+                  </ul>
+                  
+{/* 
             <h3>Users & Authors</h3>
             <table className="table table-bordered">
                 <thead>
@@ -99,7 +113,10 @@ function AdminDashboard() {
                         </tr>
                     ))}
                 </tbody>
-            </table>
+            </table> */}
+            <div className="mt-5">
+                    <Outlet/>
+                  </div>
         </div>
     );
 }

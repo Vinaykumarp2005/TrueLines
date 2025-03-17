@@ -13,8 +13,8 @@ import ArticleByID from './components/common/ArticleByID.jsx'
 import Articles from './components/common/Articles.jsx'
 import PostArticle from './components/author/PostArticle.jsx'
 import UserAuthorContext from './contexts/UserAuthorContext.jsx';
-
-
+import AdminDashboard from './components/admin/AdminDashboard.jsx';
+import UsersAuthors from './components/admin/UsersAuthors.jsx';
 const browserRouterObj=createBrowserRouter([
   {
     path:"/",
@@ -69,7 +69,17 @@ const browserRouterObj=createBrowserRouter([
         element: <Navigate to="articles" />
       }
     ]
-   }
+   },
+   {
+    path: "admin-profile/:email",
+    element: <AdminDashboard />,
+    children: [
+      { path: "users-authors", element: <UsersAuthors /> },  // ✅ Added component for users-authors
+      { path: "articles", element: <Articles /> },
+      { path: ":articleId", element: <ArticleByID /> },
+      { path: "", element: <Navigate to="users-authors" /> } // ✅ Default to users-authors
+    ]
+  }
   ]
 }
 ],{

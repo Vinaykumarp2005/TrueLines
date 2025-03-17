@@ -79,7 +79,7 @@ function Articles() {
                   <h5 className='card-title'>{articleObj.title}</h5>
                   <p className='card-text'>{articleObj.content.substring(0, 80) + "..."}</p>
                   <button className='custom-btn btn-4' onClick={() => gotoArticleId(articleObj)}>Read more</button>
-                  <div className='card-footer'>
+                  <div className='card-footer mt-3'>
                     <small className='text-body-secondary'>Last updated on {articleObj.dateOfModification}</small>
                   </div>
                 </div>

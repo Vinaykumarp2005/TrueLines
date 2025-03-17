@@ -44,8 +44,16 @@ body {
 .header-text-quote {
     color: #125181;
 }
-
-
+ul{
+    text-decoration: none;
+    list-style-type: none;
+}
+li{
+    list-style-type:none ;
+}
+a{
+    text-decoration: none;
+}
 .link {
     color: var(--royal-blue);
     text-decoration: none;

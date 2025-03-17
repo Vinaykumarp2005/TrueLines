@@ -3,13 +3,15 @@ import { Link, useNavigate } from 'react-router-dom'
 import { useClerk ,useUser} from '@clerk/clerk-react'
 import { userAuthorContextObj } from '../../contexts/UserAuthorContext'
 import logo from '../../assets/logo.jpeg'
+import { useLocation } from 'react-router-dom'
 
 function Header() {
     const {signOut}= useClerk()
     const {isSignedIn,user,isLoaded}= useUser()
     const {currentUser,setCurrentUser}=useContext(userAuthorContextObj)
     const navigate=useNavigate();
-
+ const {state}=useLocation()
+ 
     //function to signpot
     async function handlingSignout(){
       await signOut();
@@ -35,24 +37,24 @@ function Header() {
             !isSignedIn ?
             <>
              <li>
-            <Link to=''>Home</Link>
+           <button className="btn btn-light m-2 "> <Link to='' style={{ textDecoration: "none"}}>Home</Link></button>
           </li>
           <li>
-            <Link to='signin'>Signin</Link>
+          <button className="btn btn-light m-2">  <Link to='signin' style={{ textDecoration: "none"}}>Signin</Link></button>
           </li>
           <li>
-            <Link to='signup'>Signup</Link>
+          <button className="btn btn-light m-2  ">   <Link to='signup' style={{ textDecoration: "none"}}>Signup</Link></button>
           </li>
         
             
             </>:
             <div className='user-button'>
               <div style={{position:'relative'}}>
-                <img src="[user.imageUrl" width='40px' className='rounded-circle' alt="" />
+                <img src={user.profileImageUrl} width='40px' className='rounded-circle' alt="" />
               </div>
-              <p className='mb-0 user-name ' style={{position:'absolute',top:"0px"}}>{user.firstName}</p>
+              <p className='mb-0 user-name mt-2 ' style={{position:'absolute',top:"0px"}}>{user.firstName}</p>
               
-              <button className="btn btn-danger m-2" onClick={handlingSignout}>SignOut</button>
+              <button className="btn btn-danger m-3" onClick={handlingSignout}>SignOut</button>
             </div>
           }
 
