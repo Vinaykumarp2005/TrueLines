@@ -10,7 +10,7 @@ const UsersAuthors = () => {
 
   async function fetchUsers() {
     try {
-      const res = await axios.get("http://localhost:3000/admin-api/users-authors");
+      const res = await axios.get("https://truelines-backend.onrender.com/admin-api/users-authors");
       setUsers(res.data.payload);
     } catch (err) {
       console.error("Failed to load users/authors");
@@ -18,7 +18,7 @@ const UsersAuthors = () => {
   }
 
   async function toggleUser(id) {
-    await axios.put(`http://localhost:3000/admin-api/toggle-user/${id}`);
+    await axios.put(`https://truelines-backend.onrender.com/admin-api/toggle-user/${id}`);
     fetchUsers();
   }
 

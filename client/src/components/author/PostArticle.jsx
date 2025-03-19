@@ -30,7 +30,7 @@ function PostArticle() {
         articleObj.comments=[];
         articleObj.isArticleActive=true;
         console.log(articleObj)
-        let res=await axios.post('http://localhost:3000/author-api/article',articleObj)
+        let res=await axios.post('https://truelines-backend.onrender.com/author-api/article',articleObj)
         if(res.status===201){
           navigate('/author-profile/${currentUser.email}/articles')
         }else{

@@ -8,10 +8,10 @@ const adminApp=require("./APIs/adminApi");
 const cors=require('cors')
 app.use(cors())
 const port =process.env.PORT||4000;
-
+const frontendurl="https://truelines-frontend.onrender.com/"
 //db connection
 mongoose.connect(process.env.DBURL)
-.then(()=>{app.listen(port,()=>console.log(`server listening on port ${port} ..`))
+.then(()=>{app.listen(frontendurl,()=>console.log(`server listening on port ${port} ..`))
     console.log("DB connection success")
 })
 .catch(err=>console.log("Err in DB connecion ",err))

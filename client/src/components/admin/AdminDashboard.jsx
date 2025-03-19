@@ -15,7 +15,7 @@ function AdminDashboard() {
 
     async function fetchUsers() {
         try {
-            const res = await axios.get("http://localhost:3000/admin-api/users-authors");
+            const res = await axios.get("https://truelines-backend.onrender.com/admin-api/users-authors");
             setUsers(res.data.payload);
         } catch (err) {
             setError("Failed to load users");
@@ -24,7 +24,7 @@ function AdminDashboard() {
 
     async function fetchArticles() {
         try {
-            const res = await axios.get("http://localhost:3000/admin-api/articles");
+            const res = await axios.get("https://truelines-backend.onrender.com/admin-api/articles");
             setArticles(res.data.payload);
         } catch (err) {
             setError("Failed to load articles");
@@ -32,12 +32,12 @@ function AdminDashboard() {
     }
 
     async function toggleUser(id) {
-        await axios.put(`http://localhost:3000/admin-api/toggle-user/${id}`);
+        await axios.put(`https://truelines-backend.onrender.com/admin-api/toggle-user/${id}`);
         fetchUsers();
     }
 
     async function toggleArticle(articleId) {
-        await axios.put(`http://localhost:3000/admin-api/toggle-article/${articleId}`);
+        await axios.put(`https://truelines-backend.onrender.com/admin-api/toggle-article/${articleId}`);
         fetchArticles();
     }
 

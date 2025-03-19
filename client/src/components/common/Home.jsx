@@ -25,7 +25,7 @@ function Home() {
     let res=null;
 try{
     if(selectedRole==='author'){
-      res=await axios.post('http://localhost:3000/author-api/author',currentUser)
+      res=await axios.post('https://truelines-backend.onrender.com/author-api/author',currentUser)
       let {message,payload}=res.data;
       if(message==='author'){
         setCurrentUser({...currentUser,...payload})
@@ -37,7 +37,7 @@ try{
       }
     }
     if(selectedRole==='user'){
-      res=await axios.post('http://localhost:3000/user-api/user',currentUser)
+      res=await axios.post('https://truelines-backend.onrender.com/user-api/user',currentUser)
       let {message,payload}=res.data;
       if(message==='user'){
         setCurrentUser({...currentUser,...payload})
@@ -49,7 +49,7 @@ try{
       }
     }
     if(selectedRole==='admin'){
-      res=await axios.post('http://localhost:3000/admin-api/admin',currentUser)
+      res=await axios.post('https://truelines-backend.onrender.com/admin-api/admin',currentUser)
       let {message,payload}=res.data;
       if(message==='Admin already exists'){
         setCurrentUser({...currentUser,...payload})
